@@ -14,21 +14,26 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        Thread background = new Thread() {
+            public void run() {
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                try {
+                    // Thread will sleep for 5 seconds
+                    sleep(5000);
+
+                    // After 5 seconds redirect to another intent
+                    Intent i = new Intent(getBaseContext(), LoginActivity.class);
+                    startActivity(i);
+
+                    //Remove activity
+                    finish();
+
+                } catch (Exception e) {
+
+                }
             }
-        });
-
-        Intent intent=new Intent(SplashActivity.this,LoginActivity.class);
-        startActivity(intent);
-        finish();
+        };
+    new Thread(background).start();
     }
 
 }

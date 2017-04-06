@@ -30,11 +30,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class LoginActivity extends AppCompatActivity implements GoogleApiClient.OnConnectionFailedListener,View.OnClickListener {
-    public static final int RC_SIGN_IN=7283;
+    public static final int RC_SIGN_IN = 7283;
     public static final String TAG = "LoginActivity";
     private Button btGoogleSignin;
     private GoogleApiClient mGoogleApiClient;
-    private FirebaseAuth  mAuth;
+    private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
 
 
@@ -44,8 +44,12 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
 
-        Button btGoogleSignin= (Button) findViewById(R.id.btGoogleSignin);
+        Button btGoogleSignin = (Button) findViewById(R.id.btGoogleSignin);
         btGoogleSignin.setOnClickListener(this);
+        Button btFacebookSignin = (Button) findViewById(R.id.btFacebookSignin);
+        btFacebookSignin.setOnClickListener(this);
+
+
         // Configure Google Sign In
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id))
@@ -67,6 +71,8 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 if (user != null) {
                     // User is signed in
                     Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
+                    Intent projectIntent = new Intent(LoginActivity.this, ProjectActivity.class);
+                    startActivity(projectIntent);
                 } else {
                     // User is signed out
                     Log.d(TAG, "onAuthStateChanged:signed_out");
@@ -74,11 +80,14 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
             }
         };
-            }
+        btGoogleSignin.setOnClickListener(this);
+    }
+
     private void signIn() {
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -94,7 +103,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
                 // Google Sign In failed, update UI appropriately
                 // ...
             }
-         }
+        }
     }
 
     @Override
@@ -136,13 +145,19 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Snackbar.make(btGoogleSignin,"Not Connected to intenet", BaseTransientBottomBar.LENGTH_INDEFINITE).show();
+        Snackbar.make(btGoogleSignin, "Not Connected to intenet", BaseTransientBottomBar.LENGTH_INDEFINITE).show();
 
     }
 
     @Override
     public void onClick(View v) {
-        signIn();
+        switch (v.getId()) {
+
+            case R.id.btGoogleSignin:
+
+                signIn();
+                break;
+        }
     }
 }
 
