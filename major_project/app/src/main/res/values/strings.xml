@@ -5,6 +5,23 @@
     <string name="title_activity_about">About</string>
     <string name="title_activity_feedback">Feedback</string>
     <string name="title_activity_setting">Setting</string>
+    <string-array name="option1">
+        <item>None</item>
+        <item>Bold</item>
+        <item>Italic</item>
+    </string-array>
+    <string-array name="option2">
+        <item>None</item>
+        <item>Red</item>
+        <item>Green</item>
+        <item>Blue</item>
+        <item>Yellow</item>
+    </string-array>
+    <string-array name="option3">
+        <item>None</item>
+        <item>Dark</item>
+        <item>Light</item>
+    </string-array>
     <string name="title_activity_home">Home</string>
     <string name="title_activity_splash">Splash</string>
     <string name="facebook_app_id">276757556095483</string>
@@ -101,7 +118,14 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
-    <string name="Setting">Setting</string>
     <string name="About">About</string>
     <string name="Feedback">Feedback</string>
+    <string name="title_activity_new_project">NewProjectActivity</string>
+    <string name="title_activity_deep_link">DeepLinkActivity</string>
+    <string name="invitation_message">try the best editor on play store</string>
+    <string name="Deep_link_default">Deep link not set</string>
+    <string name="invitation_id_default">Invitation id not set</string>
+    <string name="invitation_title">Send App Invite QuickStart</string>
+    <string name="invitation_cta">Install!</string>
+    <string name="invitation_deep_link">https://ys86z.app.goo.gl/OvKB</string>
 </resources>

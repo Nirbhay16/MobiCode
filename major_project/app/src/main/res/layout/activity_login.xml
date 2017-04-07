@@ -24,32 +24,29 @@
         android:id="@+id/btFacebookSignin"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="40dp"
+        android:layout_marginBottom="166dp"
         android:background="@drawable/f2"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/btGoogleSignin"
+        android:layout_alignStart="@+id/btGoogleSignin" />
 
     <Button
         android:id="@+id/btGoogleSignin"
         android:layout_width="368dp"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/btFacebookSignin"
-        android:layout_alignEnd="@+id/btFacebookSignin"
-        android:layout_alignLeft="@+id/btFacebookSignin"
-        android:layout_alignRight="@+id/btFacebookSignin"
-        android:layout_alignStart="@+id/btFacebookSignin"
-        android:layout_marginBottom="78dp"
+        android:layout_marginBottom="64dp"
         android:background="@drawable/g2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btFacebookSignin"
-        app:layout_constraintVertical_bias="0.491" />
+        app:layout_constraintVertical_bias="0.491"
+        android:layout_above="@+id/btFacebookSignin"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>
