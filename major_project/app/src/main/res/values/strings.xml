@@ -104,4 +104,12 @@
     <string name="Setting">Setting</string>
     <string name="About">About</string>
     <string name="Feedback">Feedback</string>
+    <string name="title_activity_new_project">NewProjectActivity</string>
+    <string name="title_activity_deep_link">DeepLinkActivity</string>
+    <string name="invitation_message">try the best editor on play store</string>
+    <string name="Deep_link_default">Deep link not set</string>
+    <string name="invitation_id_default">Invitation id not set</string>
+    <string name="invitation_title">Send App Invite QuickStart</string>
+    <string name="invitation_cta">Install!</string>
+    <string name="invitation_deep_link">https://ys86z.app.goo.gl/OvKB</string>
 </resources>
