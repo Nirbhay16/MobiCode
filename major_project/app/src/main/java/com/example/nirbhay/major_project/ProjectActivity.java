@@ -100,6 +100,44 @@ public class ProjectActivity extends AppCompatActivity
         }
     }
 
+<<<<<<< HEAD
+=======
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.project, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_setting) {
+            Intent i = new Intent(this, SettingActivity.class);
+            startActivity(i);
+            return true;
+        }
+        if (id == R.id.action_about) {
+            Intent i = new Intent(this, AboutActivity.class);
+            startActivity(i);
+            return true;
+        }
+        if (id==R.id.action_feedback){
+            Intent i = new Intent(this, FeedbackActivity.class);
+            startActivity(i);
+            return true;
+        }
+
+
+        return super.onOptionsItemSelected(item);
+    }
+>>>>>>> origin/master
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

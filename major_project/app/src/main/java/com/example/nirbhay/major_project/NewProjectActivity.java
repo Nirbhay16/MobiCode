@@ -1,5 +1,6 @@
 package com.example.nirbhay.major_project;
 
+<<<<<<< HEAD
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,12 +32,32 @@ public class NewProjectActivity extends AppCompatActivity {
 
     private File folder;
 
+=======
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+
+import in.nashapp.androidsummernote.Summernote;
+
+import static com.example.nirbhay.major_project.R.id.summernote;
+
+public class NewProjectActivity extends AppCompatActivity {
+
+    private Summernote summernote;
+
+>>>>>>> origin/master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_project);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+<<<<<<< HEAD
         if (!isExternalStorageReadable()) {
             Toast.makeText(this, "cannot read", Toast.LENGTH_SHORT).show();
             return;
@@ -81,6 +102,12 @@ public class NewProjectActivity extends AppCompatActivity {
             Log.e(LOG_TAG, "Directory not created");
         }
         return file;
+=======
+        summernote = (Summernote) findViewById(R.id.summernote);
+        summernote.setRequestCodeforFilepicker(5);//Any Number which is not being used by other OnResultActivity
+
+
+>>>>>>> origin/master
     }
 
 
@@ -88,6 +115,7 @@ public class NewProjectActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         super.onActivityResult(requestCode, resultCode, intent);
         summernote.onActivityResult(requestCode, resultCode, intent);
+<<<<<<< HEAD
     }
 
 
@@ -135,5 +163,9 @@ public class NewProjectActivity extends AppCompatActivity {
                 break;
         }
         return super.onOptionsItemSelected(item);
+=======
+//      In Activity
+//        Fragment.summernote.onActivityResult(requestCode, resultCode, intent);
+>>>>>>> origin/master
     }
 }
