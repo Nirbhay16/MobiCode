@@ -117,7 +117,7 @@ public class ProjectActivity extends AppCompatActivity
             finish();
         } else if (id == R.id.nav_logout) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_setting) {
 
 
         } else if (id == R.id.nav_invite) {
