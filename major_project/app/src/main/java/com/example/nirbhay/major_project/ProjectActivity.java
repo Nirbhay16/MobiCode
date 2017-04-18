@@ -26,6 +26,7 @@ import com.google.android.gms.appinvite.AppInviteReferral;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class ProjectActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
@@ -100,14 +101,6 @@ public class ProjectActivity extends AppCompatActivity
         }
     }
 
-<<<<<<< HEAD
-=======
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.project, menu);
-        return true;
-    }
 
 
     @Override
@@ -118,17 +111,17 @@ public class ProjectActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_setting) {
+        if (id == R.id.nav_setting) {
             Intent i = new Intent(this, SettingActivity.class);
             startActivity(i);
             return true;
         }
-        if (id == R.id.action_about) {
+        if (id == R.id.nav_about) {
             Intent i = new Intent(this, AboutActivity.class);
             startActivity(i);
             return true;
         }
-        if (id==R.id.action_feedback){
+        if (id==R.id.nav_feedback){
             Intent i = new Intent(this, FeedbackActivity.class);
             startActivity(i);
             return true;
@@ -137,7 +130,6 @@ public class ProjectActivity extends AppCompatActivity
 
         return super.onOptionsItemSelected(item);
     }
->>>>>>> origin/master
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
@@ -152,12 +144,22 @@ public class ProjectActivity extends AppCompatActivity
         } else if (id == R.id.nav_new_project) {
            Intent i=new Intent(this,NewProjectActivity.class);
             startActivity(i);
-            finish();
         } else if (id == R.id.nav_logout) {
+            FirebaseAuth.getInstance().signOut();
+            Intent i=new Intent(this,LoginActivity.class);
+            startActivity(i);
+            finish();
 
         } else if (id == R.id.nav_setting) {
 
-
+            Intent i = new Intent(this, SettingActivity.class);
+            startActivity(i);
+        }else if (id == R.id.nav_about) {
+            Intent i = new Intent(this, AboutActivity.class);
+            startActivity(i);
+        }else if (id == R.id.nav_feedback){
+            Intent i=new Intent(this,FeedbackActivity.class);
+            startActivity(i);
         } else if (id == R.id.nav_invite) {
             onInviteClicked();
 

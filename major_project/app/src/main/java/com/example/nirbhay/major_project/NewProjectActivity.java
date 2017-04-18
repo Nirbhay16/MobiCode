@@ -1,8 +1,9 @@
 package com.example.nirbhay.major_project;
 
-<<<<<<< HEAD
+
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -27,37 +28,20 @@ public class NewProjectActivity extends AppCompatActivity {
 
     public static final int REQUEST_CODE_FOR_FILEPICKER = 23;
     private static final String LOG_TAG = "ab";
+    public static final String PATH_KEY = "com.example.nirbhay.major_project.PATH";
 
-    private Summernote summernote;
+    public Summernote summernote;
 
     private File folder;
+    private File file;
 
-=======
-import android.content.Intent;
-import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.View;
-
-import in.nashapp.androidsummernote.Summernote;
-
-import static com.example.nirbhay.major_project.R.id.summernote;
-
-public class NewProjectActivity extends AppCompatActivity {
-
-    private Summernote summernote;
-
->>>>>>> origin/master
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_project);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-<<<<<<< HEAD
+
         if (!isExternalStorageReadable()) {
             Toast.makeText(this, "cannot read", Toast.LENGTH_SHORT).show();
             return;
@@ -66,7 +50,7 @@ public class NewProjectActivity extends AppCompatActivity {
             Toast.makeText(this, "cannot write", Toast.LENGTH_SHORT).show();
             return;
         }
-        folder = getProjectStorageDir(NewProjectActivity.this, "project_1");
+        folder = getProjectStorageDir(NewProjectActivity.this, "project_2");
 
 
         summernote = (Summernote) findViewById(R.id.summernote);
@@ -102,20 +86,8 @@ public class NewProjectActivity extends AppCompatActivity {
             Log.e(LOG_TAG, "Directory not created");
         }
         return file;
-=======
-        summernote = (Summernote) findViewById(R.id.summernote);
-        summernote.setRequestCodeforFilepicker(5);//Any Number which is not being used by other OnResultActivity
-
-
->>>>>>> origin/master
-    }
-
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        super.onActivityResult(requestCode, resultCode, intent);
-        summernote.onActivityResult(requestCode, resultCode, intent);
-<<<<<<< HEAD
+        //summernote = (Summernote) findViewById(R.id.summernote);
+        // summernote.setRequestCodeforFilepicker(5);
     }
 
 
@@ -126,13 +98,13 @@ public class NewProjectActivity extends AppCompatActivity {
             return;
         } else {
             try {
-                File file = new File(folder, "test2.html");
+                file = new File(folder, "test3.html");
                 file.createNewFile();
                 OutputStream outputStream = new FileOutputStream(file);
                 outputStream.write(fileData.getBytes());
                 outputStream.flush();
                 outputStream.close();
-                Toast.makeText(this, "file saved", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "file saved " + file.getAbsolutePath(), Toast.LENGTH_SHORT).show();
             } catch (FileNotFoundException e) {
                 e.printStackTrace();
             } catch (IOException e) {
@@ -145,27 +117,52 @@ public class NewProjectActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
-        getMenuInflater().inflate(R.menu.project,menu);
+        getMenuInflater().inflate(R.menu.project, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_share:
-                // TODO ADD SHARE INTENT TO SHARE THE FILE
+                Intent share = new Intent(Intent.ACTION_SEND);
+                share.setType("text/plain");
+                share.putExtra(Intent.EXTRA_SUBJECT, "Scoop");
+
+                share.putExtra(Intent.EXTRA_TEXT, "Your friend has invited you to join the app./n To join click the link");
+                startActivity(Intent.createChooser(share, "Share via..."));
                 break;
             case R.id.action_save:
                 saveCode();
+
                 break;
             case R.id.action_preview:
-                // // TODO: 4/14/2017 ADD A COMMON INTENT FROM ANDROID DEVELOPER WEBSITE
+                try {
+                    saveCode();
+                    showPerviewIntent();
+                }catch (Exception e){
+                    Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
-=======
+
 //      In Activity
 //        Fragment.summernote.onActivityResult(requestCode, resultCode, intent);
->>>>>>> origin/master
+    }
+
+    private void showPerviewIntent() {
+        Toast.makeText(this, "Autosaving...", Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(this,PreviewActivity.class);
+        intent.putExtra(PATH_KEY,file.getAbsolutePath());
+        startActivity(intent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        summernote.onActivityResult(requestCode, resultCode, intent);
+
     }
 }
+
