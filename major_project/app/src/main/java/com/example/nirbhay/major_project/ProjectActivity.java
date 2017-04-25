@@ -1,12 +1,17 @@
 package com.example.nirbhay.major_project;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -29,11 +34,12 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ProjectActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, GoogleApiClient.OnConnectionFailedListener, View.OnClickListener {
     private static final int REQUEST_INVITE = 0;
     private GoogleApiClient mGoogleApiClient;
-    public static final String TAG="ProjectActivity";
-
+    public static final String TAG = "ProjectActivity";
+    private FloatingActionButton fab;
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +47,7 @@ public class ProjectActivity extends AppCompatActivity
         setContentView(R.layout.activity_project);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        fab = (FloatingActionButton) findViewById(R.id.fabadd);
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -80,10 +87,11 @@ public class ProjectActivity extends AppCompatActivity
                                 }
                             }
                         });
+        fab.setOnClickListener(this);
     }
 
 
-   private void onInviteClicked() {
+    private void onInviteClicked() {
         Intent intent = new AppInviteInvitation.IntentBuilder(getString(R.string.invitation_title))
                 .setMessage(getString(R.string.invitation_message))
                 .setDeepLink(Uri.parse(getString(R.string.invitation_deep_link)))
@@ -91,6 +99,7 @@ public class ProjectActivity extends AppCompatActivity
                 .build();
         startActivityForResult(intent, REQUEST_INVITE);
     }
+
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -99,8 +108,8 @@ public class ProjectActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
         }
-    }
 
+    }
 
 
     @Override
@@ -121,7 +130,7 @@ public class ProjectActivity extends AppCompatActivity
             startActivity(i);
             return true;
         }
-        if (id==R.id.nav_feedback){
+        if (id == R.id.nav_feedback) {
             Intent i = new Intent(this, FeedbackActivity.class);
             startActivity(i);
             return true;
@@ -142,11 +151,11 @@ public class ProjectActivity extends AppCompatActivity
         } else if (id == R.id.nav_project) {
 
         } else if (id == R.id.nav_new_project) {
-           Intent i=new Intent(this,NewProjectActivity.class);
+            Intent i = new Intent(this, NewProjectActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_logout) {
             FirebaseAuth.getInstance().signOut();
-            Intent i=new Intent(this,LoginActivity.class);
+            Intent i = new Intent(this, LoginActivity.class);
             startActivity(i);
             finish();
 
@@ -154,15 +163,14 @@ public class ProjectActivity extends AppCompatActivity
 
             Intent i = new Intent(this, SettingActivity.class);
             startActivity(i);
-        }else if (id == R.id.nav_about) {
+        } else if (id == R.id.nav_about) {
             Intent i = new Intent(this, AboutActivity.class);
             startActivity(i);
-        }else if (id == R.id.nav_feedback){
-            Intent i=new Intent(this,FeedbackActivity.class);
+        } else if (id == R.id.nav_feedback) {
+            Intent i = new Intent(this, FeedbackActivity.class);
             startActivity(i);
         } else if (id == R.id.nav_invite) {
             onInviteClicked();
-
 
 
         }
@@ -174,9 +182,10 @@ public class ProjectActivity extends AppCompatActivity
 
     @Override
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-        Log.d(TAG,"On connection failed" +connectionResult);
+        Log.d(TAG, "On connection failed" + connectionResult);
 
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -195,13 +204,19 @@ public class ProjectActivity extends AppCompatActivity
             }
         }
     }
- private void showMessage(String msg){
-     Toast.makeText(this,msg,Toast.LENGTH_SHORT).show();
 
- }
+    private void showMessage(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+
+    }
+
+
+    @Override
+    public void onClick(View v) {
+        Intent dialogfile=new Intent(this,DialogActivity.class);
+        startActivity(dialogfile);
+    }
 }
-
-
 
 
 

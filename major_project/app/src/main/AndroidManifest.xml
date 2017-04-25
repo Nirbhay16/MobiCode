@@ -64,7 +64,9 @@
         <activity
             android:name=".PreviewActivity"
             android:label="MOBICODE"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        b
+        <activity android:name=".DialogActivity"></activity>
     </application>
 
 </manifest>

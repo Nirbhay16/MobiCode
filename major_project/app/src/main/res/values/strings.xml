@@ -129,4 +129,5 @@
     <string name="invitation_cta">Install!</string>
     <string name="invitation_deep_link">https://ys86z.app.goo.gl/OvKB</string>
     <string name="title_activity_preview">PreviewActivity</string>
+    <string name="Add">Add</string>
 </resources>
