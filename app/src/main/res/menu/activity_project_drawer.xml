@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_profile"
+            android:icon="@drawable/ic_person_black_24dp"
+            android:title="My Profile" />
+        <item
+            android:id="@+id/nav_project"
+            android:icon="@drawable/ic_import_contacts_black_24dp"
+            android:title="Project" />
+        <item
+            android:id="@+id/nav_new_project"
+            android:icon="@drawable/ic_queue_black_24dp"
+            android:title="New Project" />
+
+    </group>
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/ic_settings_power_black_24dp"
+        android:title="Logout" />
+    <item
+        android:id="@+id/nav_invite"
+        android:icon="@drawable/ic_insert_invitation_black_24dp"
+        android:title="Invite" />
+    <item
+        android:id="@+id/nav_setting"
+        android:icon="@drawable/ic_menu_manage"
+        android:title="Setting" />
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/about_icon_google_play"
+        android:title="About" />
+    <item
+        android:id="@+id/nav_feedback"
+        android:icon="@drawable/ic_feedback_black_24dp"
+        android:title="Feedback" />
+
+</menu>

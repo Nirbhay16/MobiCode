@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/action_save"
+        android:icon="@drawable/ic_save_black_24dp"
+        android:title="Save"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_preview"
+        android:icon="@drawable/ic_language_black_24dp"
+        android:title="Preview"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/action_share"
+        android:icon="@drawable/ic_share_black_24dp"
+        android:title="@string/com_facebook_share_button_text"
+        app:showAsAction="always" />
+</menu>
